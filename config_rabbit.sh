@@ -34,7 +34,7 @@ rabbitmqctl add_vhost $VIRTUAL_HOST
 # Create Admin user
 rabbitmqctl add_user "$ADMIN_LOGIN" "$ADMIN_PASSWORD"
 rabbitmqctl set_permissions -p $VIRTUAL_HOST $ADMIN_LOGIN ".*" ".*" ".*"
-rabbitmqctl set_user_tags $ADMIN_LOGIN administrator
+rabbitmqctl set_user_tags $ADMIN_LOGIN full_access administrator
 echo "$0 `date` user $ADMIN_LOGIN created"
 
 # Create user
