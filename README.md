@@ -33,6 +33,25 @@ Or with env variables :
                -p 15674:15674 rabbitmq-stomp
 ```
 
+With specifi configuration ( external rabbitmq.conf ) : 
+
+```
+
+    docker run -d                                                  \
+               --env VIRTUAL_HOST=/                                \
+               --env ADMIN_LOGIN=admin                             \
+               --env ADMIN_PASSWORD=admin                          \
+               --env USER_LOGIN=user                               \
+               --env USER_PASSWORD=user                            \
+                --name rabbitmq-stomp                              \
+               -p 1883:1883                                        \
+               -p 5672:5672                                        \
+               -p 8181:15672                                       \
+               -p 15674:15674                                      \
+               -v ${PWD}/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf \
+               -e RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq.conf \
+               rabbitmq-stomp
+```
 
 Go to : http://localhost:8181  - ( admin/admin - user/user )
 
