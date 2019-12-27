@@ -1,5 +1,5 @@
 
-FROM rabbitmq:3.7
+FROM rabbitmq:3.8.2-management
 
 ENV RABBITMQ_DEFAULT_USER admin
 ENV RABBITMQ_DEFAULT_PASS admin
@@ -9,11 +9,6 @@ RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
 RUN rabbitmq-plugins enable --offline rabbitmq_web_stomp
 
 RUN apt-get update && apt-get install -y wget && apt-get install -y python3 
-
-RUN wget https://raw.githubusercontent.com/rabbitmq/rabbitmq-management/v3.7.23/bin/rabbitmqadmin
-RUN chmod +x rabbitmqadmin
-RUN sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python3|' rabbitmqadmin
-RUN mv rabbitmqadmin /usr/bin/
 
 ADD init.sh /
 ADD config_rabbit.sh /
