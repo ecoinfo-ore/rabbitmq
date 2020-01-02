@@ -8,6 +8,8 @@ RUN rabbitmq-plugins enable --offline rabbitmq_management
 RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
 RUN rabbitmq-plugins enable --offline rabbitmq_web_stomp
 
+RUN rabbitmq-plugins enable --offline rabbitmq_amqp1_0
+
 RUN apt-get update && apt-get install -y wget && apt-get install -y python3 
 
 ADD init.sh /
